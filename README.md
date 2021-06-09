@@ -17,13 +17,20 @@ POC of a _Book REST API_ using [gorilla/mux](https://github.com/gorilla/mux) (a 
 
 ## How to use?
 
-On the repo directory, run: `go run .`, then consume the services below on your Rest Client tool.
+On the repo **root directory**, run: `go run .`, you should see something like this:
+
+```sh
+YYYY/MM/DD HH:mm:ss file load took 11.617198ms
+YYYY/MM/DD HH:mm:ss Start Book Rest API
+```
+
+Then, consume the services below on your Rest Client tool.
 
 ## Services
 
 ### Create new book
 
-**POST:** `http://localhost:8080/api/v1/books`
+**POST:** `http://localhost:8080/books`
 
 ```json
 {
@@ -44,22 +51,43 @@ On the repo directory, run: `go run .`, then consume the services below on your 
 
 ### Get book by author
 
-**GET:** `http://localhost:8080/api/v1/books/authors/{author}`
+**GET:** `http://localhost:8080/books/authors/{author}`
 
 * * *
 
 ### Get book by name
 
-**GET:** `http://localhost:8080/api/v1/books/book-name/{bookName}`
+**GET:** `http://localhost:8080/books/book-name/{bookName}`
 
 * * *
 
 ### Get Book by ISBN (International Standard Book Number)
 
-**GET:** `http://localhost:8080/api/v1/books/isbn/{isbn}`
+**GET:** `http://localhost:8080/books/isbn/{isbn}`
+
+* * *
+
+### Update Book by ISBN (International Standard Book Number)
+
+**PUT:** `http://localhost:8080/books/isbn/{isbn}`
+
+```json
+{
+    "book_id": "8429",
+    "title": "Insects & Spiders",
+    "authors": "David Burnie",
+    "average_rating": "4.33",
+    "isbn":"0783548818",
+    "isbn_13":"9780783548814",
+    "language_code":"eng",
+    "num_pages":"64",
+    "ratings":"3",
+    "reviews":"0"
+}
+```
 
 * * *
 
 ### Delete Book by ISBN (International Standard Book Number)
 
-**DELETE:** `http://localhost:8080/api/v1/books/isbn/{isbn}`
+**DELETE:** `http://localhost:8080/books/isbn/{isbn}`

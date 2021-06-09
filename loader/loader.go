@@ -28,7 +28,6 @@ func LoadData(r io.Reader) *[]*BookData {
 	for {
 		row, err := reader.Read()
 		if err == io.EOF {
-			log.Println("End of File")
 			break
 		} else if err != nil {
 			log.Println(err)

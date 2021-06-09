@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/GuillaumeFalourd/poc-book-api-golang/loader"
 	"github.com/gorilla/mux"
 )
 
@@ -167,6 +168,51 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusNotFound)
 	w.Write([]byte(`{"error": "not created"}`))
+}
+
+func updateByISBN(w http.ResponseWriter, r *http.Request) {
+	queries := mux.Vars(r)
+	err := r.ParseForm()
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error": "body not parsed"}`))
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if val, ok := queries["isbn"]; ok {
+		data := books.SearchISBN(val)
+		if data != nil {
+
+			avgRating, _ := strconv.ParseFloat(r.FormValue("AverageRating"), 64)
+			numPages, _ := strconv.Atoi(r.FormValue("NumPages"))
+			ratings, _ := strconv.Atoi(r.FormValue("Ratings"))
+			reviews, _ := strconv.Atoi(r.FormValue("Reviews"))
+
+			ok := books.UpdateBook(
+				queries["isbn"],
+				&loader.BookData{
+					BookID:        r.FormValue("BookID"),
+					Title:         r.FormValue("Title"),
+					Authors:       r.FormValue("Authors"),
+					AverageRating: avgRating,
+					ISBN:          queries["isbn"],
+					ISBN13:        r.FormValue("ISBN13"),
+					LanguageCode:  r.FormValue("LanguageCode"),
+					NumPages:      numPages,
+					Ratings:       ratings,
+					Reviews:       reviews,
+				})
+			if ok {
+				w.WriteHeader(http.StatusOK)
+				w.Write([]byte(`{"success": "updated"}`))
+				return
+			}
+			return
+		}
+	}
+	w.WriteHeader(http.StatusNotFound)
+	w.Write([]byte(`{"error": "not found"}`))
 }
 
 func deleteByISBN(w http.ResponseWriter, r *http.Request) {
