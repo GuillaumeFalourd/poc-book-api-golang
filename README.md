@@ -17,7 +17,9 @@ POC of a _Book REST API_ using [gorilla/mux](https://github.com/gorilla/mux) (a 
 
 ## How to use?
 
-On the repo **root directory**, run: `go run .`, you should see something like this:
+On the repo **root directory**, run: `go run .`
+
+_**Obs**: You should see something like this:_
 
 ```sh
 YYYY/MM/DD HH:mm:ss file load took 11.617198ms
