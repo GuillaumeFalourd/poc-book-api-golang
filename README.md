@@ -47,11 +47,15 @@ Then, consume the services below on your Rest Client tool.
 }
 ```
 
+![create book](https://user-images.githubusercontent.com/22433243/121394116-66c49980-c927-11eb-8d8b-a3a660f8c35d.png)
+
 * * *
 
 ### Get book by author
 
 **GET:** `http://localhost:8080/books/authors/{author}`
+
+![get book by author](https://user-images.githubusercontent.com/22433243/121394149-6e843e00-c927-11eb-9068-6cfd75e13fe0.png)
 
 * * *
 
@@ -59,11 +63,15 @@ Then, consume the services below on your Rest Client tool.
 
 **GET:** `http://localhost:8080/books/book-name/{bookName}`
 
+![get book by name](https://user-images.githubusercontent.com/22433243/121394171-747a1f00-c927-11eb-9ded-1e908c6329e6.png)
+
 * * *
 
 ### Get Book by ISBN (International Standard Book Number)
 
 **GET:** `http://localhost:8080/books/isbn/{isbn}`
+
+![get book by isbn](https://user-images.githubusercontent.com/22433243/121394187-78a63c80-c927-11eb-970d-d5c2aa4f57ed.png)
 
 * * *
 
@@ -86,8 +94,12 @@ Then, consume the services below on your Rest Client tool.
 }
 ```
 
+![update book](https://user-images.githubusercontent.com/22433243/121394212-7e9c1d80-c927-11eb-982e-2bab2260068e.png)
+
 * * *
 
 ### Delete Book by ISBN (International Standard Book Number)
 
 **DELETE:** `http://localhost:8080/books/isbn/{isbn}`
+
+![delete book](https://user-images.githubusercontent.com/22433243/121394243-83f96800-c927-11eb-9bbe-83faad3343f4.png)
